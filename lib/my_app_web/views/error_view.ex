@@ -16,7 +16,7 @@ defmodule MyAppWeb.ErrorView do
 
   def render("401.json", %{message: message}) do
     %{
-      errors: %{  detail: message }
+      errors: %{detail: message}
     }
   end
 
@@ -27,5 +27,4 @@ defmodule MyAppWeb.ErrorView do
   def render("500.json", _assigns) do
     %{errors: %{detail: "Internal server error :("}}
   end
-  
 end

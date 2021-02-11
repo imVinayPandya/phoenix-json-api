@@ -20,7 +20,7 @@ defmodule MyApp.AccountTest do
     end
 
     def user_without_password(attrs \\ %{}) do
-      %{user_fixture(attrs) | password: nil }
+      %{user_fixture(attrs) | password: nil}
     end
 
     test "list_users/0 returns all users" do
@@ -73,7 +73,10 @@ defmodule MyApp.AccountTest do
       user = user_without_password()
 
       assert {:error, "Wrong email or password"} = Account.authenticate_user("wrong email", "")
-      assert {:ok, authenticated_user} = Account.authenticate_user(user.email, @valid_attrs.password)
+
+      assert {:ok, authenticated_user} =
+               Account.authenticate_user(user.email, @valid_attrs.password)
+
       assert user == authenticated_user
     end
   end

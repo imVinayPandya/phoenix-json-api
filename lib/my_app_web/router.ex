@@ -7,7 +7,7 @@ defmodule MyAppWeb.Router do
   end
 
   pipeline :api_auth do
-      plug :ensure_authenticated
+    plug :ensure_authenticated
   end
 
   scope "/api", MyAppWeb do
@@ -16,7 +16,7 @@ defmodule MyAppWeb.Router do
   end
 
   scope "/api", MyAppWeb do
-    pipe_through [:api, :api_auth ]
+    pipe_through [:api, :api_auth]
     resources "/users", UserController, except: [:new, :edit]
   end
 
@@ -29,7 +29,7 @@ defmodule MyAppWeb.Router do
       conn
       |> put_status(:unauthorized)
       |> put_view(MyAppWeb.ErrorView)
-      |> render("401.json", message: "Unauthorized user" )
+      |> render("401.json", message: "Unauthorized user")
       |> halt()
     end
   end

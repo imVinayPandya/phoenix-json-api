@@ -43,13 +43,14 @@ defmodule MyAppWeb.UserController do
 
   def sign_in(conn, %{"email" => email, "password" => password}) do
     case MyApp.Account.authenticate_user(email, password) do
-      {:ok, user} -> 
+      {:ok, user} ->
         conn
         |> put_session(:current_user_id, user.id)
         |> configure_session(renew: true)
         |> put_status(:ok)
         |> put_view(MyAppWeb.UserView)
         |> render("sign_in.json", user: user)
+
       {:error, message} ->
         conn
         |> delete_session(:current_user_id)
